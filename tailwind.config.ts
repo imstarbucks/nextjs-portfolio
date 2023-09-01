@@ -17,6 +17,9 @@ const config: Config = {
       container: {
         center: true,
       },
+      gridTemplateColumns: {
+        200: 'repeat(auto-fill, 200px )',
+      },
     },
   },
   plugins: [],

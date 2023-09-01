@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #f3f6f2;
+    --color-secondary: #8c8680;
+    --color-tertiary: #ffeccc;
+    --color-bg: #1a191a;
+  }
+}
+
+.text-stoke {
+  text-shadow:
+    -1px 1px 0 var(--color-primary),
+    1px 1px 0 var(--color-primary),
+    1px -1px 0 var(--color-primary),
+    -1px -1px 0 var(--color-primary);
+}

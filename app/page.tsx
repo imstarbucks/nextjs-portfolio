@@ -1,17 +1,34 @@
 'use client';
 
+import { useRef, useLayoutEffect, useState, useEffect } from 'react';
+import Image from 'next/image';
+
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import { useRef, useLayoutEffect } from 'react';
-
-import { skill } from '@/data/data';
+import Lenis from '@studio-freight/lenis';
+import { skill, works } from '@/data/data';
 import SkillBox from '@/components/skills';
 
+import 'swiper/css';
+
 export default function Home() {
+  const mainRef = useRef(null);
   const landingRef = useRef(null);
   const introRef = useRef(null);
   const pRef = useRef(null);
   const skillSectionRef = useRef(null);
+  const workSectionRef = useRef(null);
+  const pinnerRef = useRef(null);
+
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -59,33 +76,81 @@ export default function Home() {
 
   useLayoutEffect(() => {
     const skillSection = skillSectionRef.current;
-    const title = skillSection.querySelector('h2');
+    const skillTitle = skillSection.querySelector('h2');
 
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: skillSection,
         start: 'top center',
-        markers: true,
-        onEnter: () => {
-          title.classList.add('text-stoke');
-          gsap.to(title.querySelector('div'), {
-            scaleX: 1,
-          });
-        },
+        toggleActions: 'play reverse play reverse',
       },
     });
 
-    tl.to(title, {
+    gsap.set('.skillBox', {
+      y: '100%',
+      opacity: 0,
+    });
+
+    tl.to(skillTitle, {
       fontSize: '4rem',
       marginLeft: 0,
       marginRight: 'auto',
       ease: 'power3',
       color: '#1a191a',
+    }).to(
+      '.skillBox',
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.025,
+        ease: 'linear',
+      },
+      '<'
+    );
+  }, []);
+
+  useLayoutEffect(() => {
+    const works = workSectionRef.current;
+    const worksTitle = works.querySelector('h2');
+
+    const pinnerWrapper = pinnerRef.current;
+    let pinWrapWidth = pinnerWrapper.offsetWidth;
+    let horizontalLen = pinWrapWidth - window.innerWidth / 2;
+
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: works,
+        start: 'top center',
+        end: pinWrapWidth,
+        toggleActions: 'play reverse play reverse',
+      },
+    });
+
+    tl.to(worksTitle, {
+      fontSize: '20vw',
+      bottom: 0,
+      color: '#1a191a',
+    }).to(mainRef.current, {
+      backgroundColor: '#f3f6f2',
+    });
+
+    gsap.to(pinnerWrapper, {
+      scrollTrigger: {
+        scrub: true,
+        trigger: workSectionRef.current,
+        pin: true,
+        start: 'top top',
+        end: pinWrapWidth,
+        markers: true,
+        anticipatePin: 1,
+      },
+      x: -horizontalLen,
+      ease: 'none',
     });
   }, []);
 
   return (
-    <main className='relative min-h-screen bg-black text-primary'>
+    <main ref={mainRef} className='relative min-h-screen bg-black text-primary'>
       {/* <Nav className='fixed left-0 top-0 w-screen bg-primary p-4 text-black' /> */}
       <section
         ref={landingRef}
@@ -109,7 +174,7 @@ export default function Home() {
           className='absolute left-0 top-0 mx-auto flex min-h-screen w-full translate-y-[90%] flex-col items-center justify-center rounded-2xl bg-secondary p-10 text-black'
         >
           <p
-            className='text-4xl tracking-wider lg:text-5xl'
+            className='text-4xl leading-5 tracking-wider lg:text-5xl'
             data-hoverable='true'
             ref={pRef}
           >
@@ -125,17 +190,52 @@ export default function Home() {
           </p>
         </section>
       </section>
-      <section ref={skillSectionRef} className='min-h-screen p-10'>
+      <section
+        ref={skillSectionRef}
+        className='flex min-h-screen flex-col items-center justify-center p-10'
+      >
         <div className='container mb-8 flex'>
-          <h2 className='group relative mx-auto block text-8xl font-bold text-primary'>
+          <h2 className='text-stoke group relative mx-auto block text-8xl font-bold text-primary'>
             MY SKILLS
-            <div className='h-[2px] w-full scale-x-0 bg-primary transition-all group-hover:w-0'></div>
           </h2>
         </div>
-        <div className='md:grid-cols-200 grid grid-cols-2 items-center justify-center gap-3'>
+        <div className='grid w-full grid-cols-2 items-center justify-center gap-3 md:grid-cols-200'>
           {skill?.map((s) => (
             <SkillBox key={`${s.title}-key`} img={s.logo} title={s.title} />
           ))}
+        </div>
+      </section>
+      <section
+        ref={workSectionRef}
+        className='relative min-h-screen overflow-hidden p-10'
+      >
+        <h2 className='group absolute left-0 right-0 top-10 m-auto block h-fit w-fit select-none text-8xl font-bold text-primary'>
+          MY WORKS
+        </h2>
+        <div className='absolute flex h-screen items-center'>
+          <div
+            ref={pinnerRef}
+            className='flex h-[60%] min-h-[500px] shrink-0 grow translate-x-full items-center gap-10'
+          >
+            {works?.map((work, i) => (
+              <>
+                {
+                  <Image
+                    key={`${work.title}--key-${i}`}
+                    className='h-full w-auto'
+                    src={work.thumbnail}
+                    alt={`${work.title} Thumbnail`}
+                  />
+                }
+              </>
+            ))}
+            <div
+              data-hoverable='true'
+              className=' flex h-32 w-32 items-center justify-center rounded-full border border-white text-center text-2xl transition-all ease-in-out hover:scale-75 hover:bg-white hover:text-black'
+            >
+              View More
+            </div>
+          </div>
         </div>
       </section>
     </main>

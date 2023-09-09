@@ -18,3 +18,32 @@
     1px -1px 0 var(--color-primary),
     -1px -1px 0 var(--color-primary);
 }
+
+.text-stoke--black {
+  text-shadow:
+    -5px 5px 0 var(--color-bg),
+    5px 5px 0 var(--color-bg),
+    5px -5px 0 var(--color-bg),
+    -5px -5px 0 var(--color-bg);
+}
+
+/* Lenis */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

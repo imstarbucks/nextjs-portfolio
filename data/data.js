@@ -12,6 +12,11 @@ import php from '@/public/images/logo/php.svg';
 import docker from '@/public/images/logo/docker.svg';
 import jekyll from '@/public/images/logo/jekyll.svg';
 import figma from '@/public/images/logo/figma.svg';
+import ayanna from '@/public/images/works/ayanna-thumb.png';
+import avantro from '@/public/images/works/avantro-thumb.png';
+import ffCny2022 from '@/public/images/works/ff-cny-2022-thumb.png';
+import theReflection from '@/public/images/works/the-reflection-thumb.png';
+import pmkISP from '@/public/images/works/pmk-isp-thumb.png';
 
 export const skill = [
   {
@@ -69,5 +74,56 @@ export const skill = [
   {
     logo: figma,
     title: 'Figma',
+  },
+];
+
+export const works = [
+  {
+    thumbnail: pmkISP,
+    title: 'Pavilion ISP',
+    skills: ['NextJS', 'TypeScript', 'TailwindCSS', 'Sass/Scss', 'next-intl'],
+    link: 'https://pavilionmontkiara.com/PMKISP/',
+  },
+  {
+    thumbnail: theReflection,
+    title: 'The Reflection Westlake',
+    skills: [
+      'WordPress',
+      'Polylang',
+      'ACF',
+      'Bootstrap 5',
+      'PHP',
+      'ES6',
+      'Sass/Scss',
+      'GSAP',
+    ],
+    link: 'https://thereflectionwestlake.vn/',
+  },
+  {
+    thumbnail: ayanna,
+    title: 'Ayanna',
+    skills: [
+      'WordPress',
+      'ACF',
+      'Sass/Scss',
+      'Bootstrap 5',
+      'ReactJS',
+      'PHP',
+      'ES6',
+      'GSAP',
+    ],
+    link: 'https://ayanna.com.my/',
+  },
+  {
+    thumbnail: avantro,
+    title: 'Avantro',
+    skills: ['GSAP', 'Bootstrap 5', 'Sass/Scss', 'ES6'],
+    link: 'https://avantro.com.my/',
+  },
+  {
+    thumbnail: ffCny2022,
+    title: 'Forefront International CNY 2022',
+    skills: ['Jekyll', 'GSAP', 'Sass/Scss', 'ES6'],
+    link: 'https://forefront-cny2022.preview.forefront.international/',
   },
 ];

@@ -17,6 +17,11 @@ import avantro from '@/public/images/works/avantro-thumb.png';
 import ffCny2022 from '@/public/images/works/ff-cny-2022-thumb.png';
 import theReflection from '@/public/images/works/the-reflection-thumb.png';
 import pmkISP from '@/public/images/works/pmk-isp-thumb.png';
+import kustoHome from '@/public/images/works/kusto-home-thumb.png';
+import urbanGreen from '@/public/images/works/urban-green-thumb.png';
+import plenitude from '@/public/images/works/plenitude-thumb.png';
+import sunwayMoeny from '@/public/images/works/sunway-money-thumb.png';
+import avenue from '@/public/images/works/avenue-thumb.png';
 
 export const skill = [
   {
@@ -45,7 +50,7 @@ export const skill = [
   },
   {
     logo: sass,
-    title: 'Sass/Scss',
+    title: 'Sass / Scss',
   },
   {
     logo: javascript,
@@ -81,7 +86,7 @@ export const works = [
   {
     thumbnail: pmkISP,
     title: 'Pavilion ISP',
-    skills: ['NextJS', 'TypeScript', 'TailwindCSS', 'Sass/Scss', 'next-intl'],
+    skills: ['NextJS', 'TypeScript', 'TailwindCSS', 'Sass / Scss', 'next-intl'],
     link: 'https://pavilionmontkiara.com/PMKISP/',
   },
   {
@@ -94,7 +99,7 @@ export const works = [
       'Bootstrap 5',
       'PHP',
       'ES6',
-      'Sass/Scss',
+      'Sass / Scss',
       'GSAP',
     ],
     link: 'https://thereflectionwestlake.vn/',
@@ -105,7 +110,7 @@ export const works = [
     skills: [
       'WordPress',
       'ACF',
-      'Sass/Scss',
+      'Sass / Scss',
       'Bootstrap 5',
       'ReactJS',
       'PHP',
@@ -117,13 +122,57 @@ export const works = [
   {
     thumbnail: avantro,
     title: 'Avantro',
-    skills: ['GSAP', 'Bootstrap 5', 'Sass/Scss', 'ES6'],
+    skills: ['GSAP', 'Bootstrap 5', 'Sass / Scss', 'ES6'],
     link: 'https://avantro.com.my/',
   },
   {
     thumbnail: ffCny2022,
     title: 'Forefront International CNY 2022',
-    skills: ['Jekyll', 'GSAP', 'Sass/Scss', 'ES6'],
+    skills: ['Jekyll', 'GSAP', 'Sass / Scss', 'ES6'],
     link: 'https://forefront-cny2022.preview.forefront.international/',
+  },
+  {
+    thumbnail: avenue,
+    title: 'Langkawi Avenue',
+    skills: ['WordPress', 'GSAP', 'Sass / Scss', 'ES6'],
+    link: 'https://avenue.langkawicity.com.my/',
+  },
+  {
+    thumbnail: kustoHome,
+    title: 'Kusto Home Corporate Website',
+    skills: [
+      'WordPress',
+      'ACF',
+      'Polylang',
+      'Sass / Scss',
+      'ES6',
+      'Bootstrap 5',
+    ],
+    link: 'https://kustohome.com.vn/',
+  },
+  {
+    thumbnail: urbanGreen,
+    title: 'Urban Green',
+    skills: [
+      'WordPress',
+      'ACF',
+      'Polylang',
+      'Sass / Scss',
+      'ES6',
+      'Bootstrap 5',
+    ],
+    link: 'https://urbangreen.vn/',
+  },
+  {
+    thumbnail: plenitude,
+    title: 'Plenitude HomeSweetHome',
+    skills: ['AOS', 'GSAP', 'Sass / Scss', 'ES6', 'Bootstrap 5'],
+    link: 'http://plenitude.preview.forefront.international/',
+  },
+  {
+    thumbnail: sunwayMoeny,
+    title: 'Sunway Money',
+    skills: ['Jekyll', 'AOS', 'Sass / Scss', 'ES6', 'Bootstrap 4', 'Jquery'],
+    link: 'https://sunwaymoney.com/',
   },
 ];

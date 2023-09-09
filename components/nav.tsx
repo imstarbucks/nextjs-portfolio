@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react';
-
 import { scrollToTarget } from '@/utils/scrollToTarget';
 
 type Props = {
